@@ -1,0 +1,23 @@
+{
+  "accuracy": 0.8414216045599303,
+  "precision": 0.6497438863185724,
+  "recall": 0.42309175192102505,
+  "f1_score": 0.5124760389458766,
+  "roc_auc": 0.7865799288727281,
+  "pr_auc": 0.45099977579094197,
+  "confusion_matrix": [
+    [
+      429183,
+      25437
+    ],
+    [
+      64342,
+      47187
+    ]
+  ],
+  "model_name": "Autoencoder",
+  "model_type": "anomaly_detection",
+  "test_samples": 566149,
+  "threshold": 1.0509642362594604,
+  "timestamp": "2025-09-14T06:25:53.951945"
+}

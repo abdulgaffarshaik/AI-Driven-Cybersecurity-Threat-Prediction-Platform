@@ -1,0 +1,144 @@
+"""
+SETUP GUIDE - Running Web Dashboard with Wireshark
+====================================================
+
+STEP 1: Open PowerShell
+========================
+cd A:\Final\Final
+
+STEP 2: Start the Dashboard
+============================
+.\.venv\Scripts\python.exe live_detection.py --dashboard
+
+You'll see:
+    ================================================================================
+    🛡️  LIVE INTRUSION DETECTION SYSTEM
+    ================================================================================
+    Device: CPU only
+    PyTorch Version: 2.10.0+cpu
+    2026-03-11 12:00:17,017 - __main__ - INFO - Initializing...
+    2026-03-11 12:00:17,072 - src.inference - INFO - All models loaded successfully
+    
+    📡 Available Network Interfaces:
+      1. Loopback Pseudo-Interface 1 (127.0.0.1)
+      2. Wi-Fi (192.168.0.6)
+    
+    Select interface (1-2) or 'q' to quit: _
+
+STEP 3: Select Network Interface
+==================================
+Type: 2
+(Press Enter)
+
+The system will start monitoring Wi-Fi traffic
+
+STEP 4: Open Web Browser
+==========================
+URL: http://localhost:5000
+
+    ╔═══════════════════════════════════════════════════════════════════════╗
+    ║                 🛡️  CYBER THREAT DETECTION SYSTEM                     ║
+    ║                         Live Monitoring                               ║
+    ╠═══════════════════════════════════════════════════════════════════════╣
+    │                                                                       │
+    │  📊 STATISTICS                                                       │
+    │  ├─ Packets:        1,245                                           │
+    │  ├─ Threats:          47  🔴 HIGH                                    │
+    │  └─ Normal:         1,198  🟢 LOW                                    │
+    │                                                                       │
+    │  🚨 RECENT ALERTS                                                    │
+    │  ├─ DoS Attack       - 95% confidence                               │
+    │  ├─ Port Scan        - 87% confidence                               │
+    │  └─ Bot Activity     - 72% confidence                               │
+    │                                                                       │
+    │  📈 ATTACK BREAKDOWN                                                 │
+    │  ├─ DDoS           [████████░░]  40%                                │
+    │  ├─ Brute Force    [████░░░░░░]  20%                                │
+    │  ├─ Malware        [██░░░░░░░░]  10%                                │
+    │  └─ Other          [██░░░░░░░░]  30%                                │
+    │                                                                       │
+    ╚═══════════════════════════════════════════════════════════════════════╝
+
+STEP 5: Generate Network Traffic (Optional)
+=============================================
+To see detections, you can:
+
+1. Ping Google:
+   ping 8.8.8.8
+
+2. Browse Websites:
+   - Visit any website
+
+3. Download Files:
+   - Download something from the internet
+
+4. Run Network Commands:
+   - ipconfig /all
+   - netstat -an
+
+The dashboard will UPDATE IN REAL-TIME with:
+✓ New packets detected
+✓ Threats classified
+✓ Attack types identified
+✓ Confidence scores
+
+STEP 6: Monitor Detections
+============================
+Watch the dashboard for:
+- 🟢 GREEN = Normal traffic (BENIGN)
+- 🟡 YELLOW = Low risk detected
+- 🟠 ORANGE = Medium risk detected  
+- 🔴 RED = High risk detected (Potential attack)
+
+Each threat shows:
+- Attack Type (DoS, Bot, Port Scan, etc.)
+- Confidence Score (70-99%)
+- Source/Destination
+- Timestamp
+
+TROUBLESHOOTING
+================
+
+❌ "No networks detected"
+   → Make sure network interface exists
+   → Try option 1 (Loopback) first to test
+
+❌ "Port 5000 already in use"
+   → Close other Flask apps
+   → Or use: netstat -ano | findstr :5000
+
+❌ "Cannot access http://localhost:5000"
+   → Make sure dashboard started successfully
+   → Check that it shows "Dashboard running at..."
+   → Try http://127.0.0.1:5000 instead
+
+✓ STOP MONITORING
+   Press: Ctrl+C (in PowerShell)
+
+TIPS FOR BEST RESULTS
+======================
+1. Keep dashboard and PowerShell side-by-side
+2. Open multiple websites to generate traffic
+3. Watch threat count increase in real-time
+4. Test with different network interfaces
+5. Check results/ folder for logs
+
+PROJECT FEATURES
+=================
+✓ Real-time packet capture (with Wireshark)
+✓ AI threat detection (3 models: CNN-LSTM, DNN, Autoencoder)
+✓ 15 attack type classification
+✓ Web-based visualization
+✓ Live WebSocket updates
+✓ Confidence scores for each alert
+✓ Attack breakdown statistics
+
+NEXT STEPS
+==========
+1. ✓ Start: .\.venv\Scripts\python.exe live_detection.py --dashboard
+2. ✓ Open: http://localhost:5000
+3. ✓ Select: Interface 2 (Wi-Fi)
+4. ✓ Monitor: Watch for threats in real-time
+5. ✓ Generate: Traffic (browse, ping, download)
+6. ✓ Analyze: Dashboard shows all detections
+"""

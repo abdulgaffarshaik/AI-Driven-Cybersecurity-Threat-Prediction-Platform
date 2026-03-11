@@ -1,0 +1,71 @@
+================================================================================
+AI-BASED INTRUSION DETECTION SYSTEM - EVALUATION REPORT
+================================================================================
+
+Evaluation Date: 2025-09-14T06:26:38.881039
+Test Samples: 566,149
+Number of Classes: 15
+
+CLASS DISTRIBUTION:
+----------------------------------------
+BENIGN: 454,620 (80.30%)
+DDoS: 393 (0.07%)
+PortScan: 25,606 (4.52%)
+DoS Hulk: 2,059 (0.36%)
+DoS GoldenEye: 46,215 (8.16%)
+DoS slowloris: 1,100 (0.19%)
+DoS Slowhttptest: 1,159 (0.20%)
+FTP-Patator: 1,588 (0.28%)
+SSH-Patator: 2 (0.00%)
+Web Attack – Brute Force: 7 (0.00%)
+Web Attack – XSS: 31,786 (5.61%)
+Web Attack – Sql Injection: 1,179 (0.21%)
+Infiltration: 301 (0.05%)
+Bot: 4 (0.00%)
+Heartbleed: 130 (0.02%)
+
+MODEL PERFORMANCE:
+----------------------------------------
+
+CNN-LSTM:
+  Type: classification
+  Accuracy: 0.9673
+  Precision (Macro): 0.6204
+  Recall (Macro): 0.7547
+  F1-Score (Macro): 0.6625
+  ROC-AUC (Macro): 0.9965
+
+DNN:
+  Type: classification
+  Accuracy: 0.9740
+  Precision (Macro): 0.6703
+  Recall (Macro): 0.7864
+  F1-Score (Macro): 0.6921
+  ROC-AUC (Macro): 0.9972
+
+Ensemble:
+  Type: ensemble
+  Accuracy: 0.9715
+  Precision (Macro): 0.6733
+  Recall (Macro): 0.7762
+  F1-Score (Macro): 0.7031
+  ROC-AUC (Macro): 0.9979
+
+Autoencoder:
+  Type: anomaly_detection
+  Accuracy: 0.8414
+  Precision: 0.6497
+  Recall: 0.4231
+  F1-Score: 0.5125
+  ROC-AUC: 0.7866
+
+RECOMMENDATIONS:
+----------------------------------------
+1. Best performing model: Ensemble (F1-Score: 0.7031)
+2. CNN-LSTM: Poor performance on some classes (min F1: 0.000). Consider class balancing.
+3. DNN: Poor performance on some classes (min F1: 0.000). Consider class balancing.
+4. Ensemble: Poor performance on some classes (min F1: 0.000). Consider class balancing.
+
+================================================================================
+End of Report
+================================================================================

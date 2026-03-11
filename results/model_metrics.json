@@ -1,0 +1,52 @@
+{
+  "CNN-LSTM": {
+    "accuracy": 0.9673407530526417,
+    "precision_macro": 0.6203726790655127,
+    "recall_macro": 0.7547136611858216,
+    "f1_macro": 0.6625486595711523,
+    "f1_micro": 0.9673407530526417,
+    "roc_auc_macro": 0.9965459264680784,
+    "roc_auc_micro": 0.9997653040384819,
+    "precision_weighted": 0.974186808809898,
+    "recall_weighted": 0.9673407530526417,
+    "f1_weighted": 0.9693654678867083,
+    "detection_rate": 0.992289001066987,
+    "false_alarm_rate": 0.03814834367163785
+  },
+  "DNN": {
+    "accuracy": 0.9739962448048128,
+    "precision_macro": 0.6703276252242891,
+    "recall_macro": 0.7863586574342456,
+    "f1_macro": 0.6921025346467208,
+    "f1_micro": 0.9739962448048128,
+    "roc_auc_macro": 0.997236371323318,
+    "roc_auc_micro": 0.9998406418590782,
+    "precision_weighted": 0.9798433736128344,
+    "recall_weighted": 0.9739962448048128,
+    "f1_weighted": 0.9759513748502594,
+    "detection_rate": 0.9950864797496615,
+    "false_alarm_rate": 0.030379217808279443
+  },
+  "Ensemble": {
+    "accuracy": 0.97154282706496,
+    "precision_macro": 0.6733328445836404,
+    "recall_macro": 0.7762079707020977,
+    "f1_macro": 0.7030754505838449,
+    "f1_micro": 0.97154282706496,
+    "roc_auc_macro": 0.9979247629978634,
+    "roc_auc_micro": 0.9998195737173293,
+    "precision_weighted": 0.9774564238305636,
+    "recall_weighted": 0.97154282706496,
+    "f1_weighted": 0.9733664532379518,
+    "detection_rate": 0.9939208636318805,
+    "false_alarm_rate": 0.03341252034666315
+  },
+  "Autoencoder": {
+    "accuracy": 0.8414216045599303,
+    "precision": 0.6497438863185724,
+    "recall": 0.42309175192102505,
+    "f1_score": 0.5124760389458766,
+    "roc_auc": 0.7865799288727281,
+    "pr_auc": 0.45099977579094197
+  }
+}

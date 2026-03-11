@@ -1,0 +1,122 @@
+# AI-Based Intrusion Detection System Configuration
+# Optimized for RTX 3050 with PyTorch + CUDA
+
+# =============================================================================
+# TRAINING CONFIGURATION - OPTIMIZED FOR RTX 3050 + RYZEN 7 5800H
+# =============================================================================
+training:
+  batch_size: 1024  # Reduce CPU collation load while keeping GPU fed
+  learning_rate: 0.002  # Adjusted for smaller batch size
+  weight_decay: 1e-5
+  epochs: 20  # Real training
+  patience: 6  # Allow more patience for validation to improve
+  min_delta: 0.001
+  use_amp: true  # CRITICAL for RTX 3050
+  gradient_clip_norm: 1.0
+  warmup_epochs: 2  # Slightly longer warmup for stability
+  scheduler: "onecycle"  # Best for RTX 3050
+
+# =============================================================================
+# DATALOADER CONFIGURATION - OPTIMIZED FOR RYZEN 7 5800H (16 THREADS)
+# =============================================================================
+dataloader:
+  batch_size: 1024  # Match training batch size
+  shuffle: true
+  num_workers: 2  # Cooler operation on CPU
+  pin_memory: true  # Reduce CPU/RAM pressure on Windows
+  prefetch_factor: 2  # Lower prefetch to ease CPU/memory pressure
+  drop_last: true
+  multiprocessing_context: "spawn"  # Best for Windows + Ryzen
+
+# =============================================================================
+# CROSS-VALIDATION CONFIGURATION - OPTIMIZED FOR SPEED
+# =============================================================================
+cross_validation:
+  n_folds: 5  # Real training: better generalization without 9-fold runtime
+  test_size: 0.2
+  random_state: 42
+  stratify: true
+
+# =============================================================================
+# MODEL CONFIGURATION
+# =============================================================================
+models:
+  cnn_lstm:
+    input_size: 66  # FIXED: Actual features after removing constant columns
+    cnn_filters: [64, 128, 256]
+    cnn_kernel_sizes: [3, 3, 3]
+    cnn_dropout: 0.2
+    lstm_hidden_size: 128
+    lstm_num_layers: 2
+    lstm_dropout: 0.3
+    fc_hidden_size: 256
+    fc_dropout: 0.4
+    output_size: 15
+
+  dnn:
+    input_size: 66  # FIXED: Actual features after removing constant columns
+    hidden_sizes: [512, 256, 128, 64]
+    dropout_rates: [0.3, 0.4, 0.3, 0.2]
+    output_size: 15
+
+  autoencoder:
+    input_size: 66  # FIXED: Actual features after removing constant columns
+    encoder_sizes: [66, 33, 16, 8]
+    decoder_sizes: [8, 16, 33, 66]
+    dropout_rate: 0.2
+    activation: "relu"  # relu, tanh, sigmoid
+
+# =============================================================================
+# CLASS WEIGHTS (BALANCED)
+# =============================================================================
+class_weights:
+  0: 1.0      # BENIGN
+  1: 2.0      # DDoS
+  2: 2.0      # PortScan
+  3: 1.5      # DoS Hulk
+  4: 5.0      # DoS GoldenEye
+  5: 4.0      # DoS slowloris
+  6: 6.0      # DoS Slowhttptest
+  7: 5.0      # FTP-Patator
+  8: 6.0      # SSH-Patator
+  9: 10.0     # Web Attack – Brute Force
+  10: 15.0    # Web Attack – XSS
+  11: 20.0    # Web Attack – Sql Injection
+  12: 20.0    # Infiltration
+  13: 15.0    # Bot
+  14: 25.0    # Heartbleed
+
+# =============================================================================
+# INFERENCE CONFIGURATION
+# =============================================================================
+inference:
+  batch_size: 1
+  confidence_threshold: 0.8
+  anomaly_threshold: null
+  log_predictions: true
+  save_predictions: true
+
+# =============================================================================
+# LOGGING CONFIGURATION
+# =============================================================================
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  max_file_size: 10485760  # 10MB
+  backup_count: 5
+
+# =============================================================================
+# EVALUATION CONFIGURATION
+# =============================================================================
+evaluation:
+  metrics:
+    - "accuracy"
+    - "precision"
+    - "recall"
+    - "f1_score"
+    - "confusion_matrix"
+    - "roc_auc"
+    - "pr_auc"
+    - "detection_rate"
+    - "false_alarm_rate"
+  anomaly_threshold_percentile: 95
